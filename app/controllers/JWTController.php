@@ -10,14 +10,14 @@ class JWTController
 
         $usuario = $parametros['usuario'];
         $clave = $parametros['clave'];
-        $sector = $parametros['sector'];
+        $rol = $parametros['rol'];
 
-        $datos = ['usuario' => $usuario, 'sector' => $sector];
+        $datos = ['usuario' => $usuario, 'rol' => $rol];
 
         $respuesta = 'Tus credenciales no son validas';
 
         // Valido que exista coincidencia en la BD
-        if ($this->validarCredenciales($usuario, $clave, $sector)) {
+        if ($this->validarCredenciales($usuario, $clave, $rol)) {
             $respuesta = AutentificadorJWT::CrearToken($datos);
         }
 
@@ -27,20 +27,18 @@ class JWTController
     }
 
     // Esta función valida que las credenciales coincidan en la BD y además que el usuario no este eliminado
-    private function validarCredenciales($usuarioRecibido, $claveRecibida, $sectorRecibido)
+    private function validarCredenciales($usuarioRecibido, $claveRecibida, $rolRecibido)
     {
-        /*
         $retorno = false;
-        $lista = Usuario::obtenerTodos();
-    
+        $lista = Usuario::obtenerTodos(false, true);
+
         foreach ($lista as $usuario) {
             $hashAlmacenado = $usuario->clave;
-    
+
             if (
                 $usuarioRecibido === $usuario->usuario &&
                 password_verify($claveRecibida, $hashAlmacenado) &&
-                $sectorRecibido === $usuario->rol &&
-                $usuario->estado !== 'Eliminado'
+                $rolRecibido === $usuario->rol && $usuario->estado !== 'Eliminado'
             ) {
                 $retorno = true;
                 break;
@@ -48,6 +46,5 @@ class JWTController
         }
     
         return $retorno;
-        */
     }
 }

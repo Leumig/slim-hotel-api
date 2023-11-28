@@ -6,20 +6,20 @@ use Slim\Psr7\Response;
 
 class AuthMiddleware
 {
-    private $sectorRequerido;
-    private $sectorOpcional1;
-    private $sectorOpcional2;
-    private $sectorOpcional3;
-    private $sectorOpcional4;
+    private $rolRequerido;
+    private $rolOpcional1;
+    private $rolOpcional2;
+    private $rolOpcional3;
+    private $rolOpcional4;
 
-    public function __construct($sectorRequerido, $sectorOpcional1 = null,
-        $sectorOpcional2 = null, $sectorOpcional3 = null, $sectorOpcional4 = null)
+    public function __construct($rolRequerido, $rolOpcional1 = null,
+        $rolOpcional2 = null, $rolOpcional3 = null, $rolOpcional4 = null)
     {
-        $this->sectorRequerido = $sectorRequerido;
-        $this->sectorOpcional1 = $sectorOpcional1;
-        $this->sectorOpcional2 = $sectorOpcional2;
-        $this->sectorOpcional3 = $sectorOpcional3;
-        $this->sectorOpcional4 = $sectorOpcional4;
+        $this->rolRequerido = $rolRequerido;
+        $this->rolOpcional1 = $rolOpcional1;
+        $this->rolOpcional2 = $rolOpcional2;
+        $this->rolOpcional3 = $rolOpcional3;
+        $this->rolOpcional4 = $rolOpcional4;
     }
 
     public function __invoke(Request $request, RequestHandler $handler): Response
@@ -34,9 +34,9 @@ class AuthMiddleware
     
                 $data = AutentificadorJWT::ObtenerData($token);
 
-                $sector = $data->sector;
+                $rol = $data->rol;
         
-                if ($sector === $this->sectorRequerido || $sector === $this->sectorOpcional1 || $sector === $this->sectorOpcional2 || $sector === $this->sectorOpcional3 || $sector === $this->sectorOpcional4)
+                if ($rol === $this->rolRequerido || $rol === $this->rolOpcional1 || $rol === $this->rolOpcional2 || $rol === $this->rolOpcional3 || $rol === $this->rolOpcional4)
                 {
                     AutentificadorJWT::VerificarToken($token);
                     $response = $handler->handle($request);

@@ -15,14 +15,11 @@ class ReservaController extends Reserva implements IApiUsable
         $fecha_salida = $parametros['fecha_salida'];
         $importe = $parametros['importe'];
 
-        // Hasheamos la contraseña
-        //$claveHasheada = password_hash($clave, PASSWORD_DEFAULT);
-
         if (($tipo_cliente === "Individual" || $tipo_cliente === "Corporativo") &&
             ($tipo_habitacion === "Simple" || $tipo_habitacion === "Doble" || $tipo_habitacion === "Suite") &&
             validarNumerico($importe) && validarFecha($fecha_entrada) && validarFecha($fecha_salida))
         {
-            if (Cliente::obtenerCliente($numero_cliente) !== false)
+            if (Usuario::obtenerCliente($numero_cliente) !== false)
             {
                 // Creamos la reserva
                 $reservaNueva = new Reserva();

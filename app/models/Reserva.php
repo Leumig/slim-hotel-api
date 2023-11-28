@@ -24,8 +24,6 @@ class Reserva
             $consulta = $objAccesoDatos->prepararConsulta("INSERT INTO reservas (tipo_cliente, numero_cliente, tipo_habitacion, fecha_entrada, fecha_salida, importe, estado, fecha_alta) VALUES (:tipo_cliente, :numero_cliente, :tipo_habitacion, :fecha_entrada, :fecha_salida, :importe, :estado, NOW())");
 
             $estado = 'Activo';
-            // $consulta->bindValue(':usuario', $this->usuario, PDO::PARAM_STR);
-            // $consulta->bindValue(':clave', $this->clave, PDO::PARAM_STR);
             $consulta->bindValue(':tipo_cliente', $this->tipo_cliente, PDO::PARAM_STR);
             $consulta->bindValue(':numero_cliente', $this->numero_cliente, PDO::PARAM_INT);
             $consulta->bindValue(':tipo_habitacion', $this->tipo_habitacion, PDO::PARAM_STR);
@@ -129,7 +127,7 @@ class Reserva
         $retorno = 'Error al cancelar Reserva';
 
         try {
-            if (self::obtenerReserva($id) !== false && Cliente::validarClienteExiste($numero_cliente,           $numero_documento))
+            if (self::obtenerReserva($id) !== false && Usuario::validarClienteExiste($numero_cliente,           $numero_documento))
             {
                 $reserva = self::obtenerReserva($id);
                 if ($reserva->numero_cliente == $numero_cliente)
@@ -204,7 +202,7 @@ class Reserva
         $respuesta = 'No se encontraron coincidencias';
         $objAccesoDato = AccesoDatos::obtenerInstancia();
         
-        if (Cliente::obtenerCliente($numero_cliente) !== false && !$soloCancelaciones && !$incluirCancelaciones)
+        if (Usuario::obtenerCliente($numero_cliente) !== false && !$soloCancelaciones && !$incluirCancelaciones)
         {
             $consulta = $objAccesoDato->prepararConsulta("SELECT id, tipo_cliente, numero_cliente, tipo_habitacion, fecha_entrada, fecha_salida, importe, imagen, estado, fecha_alta FROM reservas WHERE estado != 'Cancelada' AND numero_cliente = :numero_cliente");
 
@@ -212,14 +210,14 @@ class Reserva
             $consulta->execute();
 
             $respuesta = $consulta->fetchAll(PDO::FETCH_CLASS, 'Reserva');
-        } else if (Cliente::obtenerCliente($numero_cliente) !== false && $soloCancelaciones) {
+        } else if (Usuario::obtenerCliente($numero_cliente) !== false && $soloCancelaciones) {
             $consulta = $objAccesoDato->prepararConsulta("SELECT id, tipo_cliente, numero_cliente, tipo_habitacion, fecha_entrada, fecha_salida, importe, imagen, estado, fecha_alta, fecha_baja FROM reservas WHERE estado = 'Cancelada' AND numero_cliente = :numero_cliente");
 
             $consulta->bindValue(':numero_cliente', $numero_cliente, PDO::PARAM_INT);
             $consulta->execute();
 
             $respuesta = $consulta->fetchAll(PDO::FETCH_CLASS, 'Reserva');
-        } else if (Cliente::obtenerCliente($numero_cliente) !== false && $incluirCancelaciones) {
+        } else if (Usuario::obtenerCliente($numero_cliente) !== false && $incluirCancelaciones) {
             $consulta = $objAccesoDato->prepararConsulta("SELECT id, tipo_cliente, numero_cliente, tipo_habitacion, fecha_entrada, fecha_salida, importe, imagen, estado, fecha_alta, fecha_baja FROM reservas WHERE numero_cliente = :numero_cliente");
 
             $consulta->bindValue(':numero_cliente', $numero_cliente, PDO::PARAM_INT);
@@ -310,7 +308,7 @@ class Reserva
     {
         $respuesta = 'No se encontraron coincidencias';
         
-        $listaClientes = Cliente::obtenerTodos();
+        $listaClientes = Usuario::obtenerTodos();
         $numerosDeClientesPosibles = [];
 
         $listaReservas = self::obtenerTodos();
