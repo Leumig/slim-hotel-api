@@ -49,4 +49,18 @@ class Ajuste
 
         return $consulta->fetchObject('Ajuste');
     }
+
+    public static function obtenerUltimaId()
+    {
+        $ajustes = self::obtenerTodos();
+        $ultimaID = '0';
+
+        usort($ajustes, function($a, $b) {
+            return $b->id - $a->id;
+        });
+
+        $ultimaID = $ajustes[0]->id;
+    
+        return $ultimaID;
+    }
 }

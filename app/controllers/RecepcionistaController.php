@@ -1,8 +1,8 @@
 <?php
-require_once './models/Admin.php';
+require_once './models/Recepcionista.php';
 require_once './interfaces/IApiUsable.php';
 
-class AdminController
+class RecepcionistaController
 {
     public function CargarUno($request, $response, $args)
     {
@@ -20,22 +20,22 @@ class AdminController
         // Hasheamos la contraseña
         $claveHasheada = password_hash($clave, PASSWORD_DEFAULT);
 
-        // Creamos el Admin
-        $adminNuevo = new Admin();
-        $adminNuevo->usuario = $usuario;
-        $adminNuevo->clave = $claveHasheada;
-        $adminNuevo->nombre = $nombre;
-        $adminNuevo->apellido = $apellido;
-        $adminNuevo->email = $email;
-        $adminNuevo->pais = $pais;
-        $adminNuevo->ciudad = $ciudad;
-        $adminNuevo->telefono = $telefono;
+        // Creamos el Recepcionista
+        $recepcionistaNuevo = new Recepcionista();
+        $recepcionistaNuevo->usuario = $usuario;
+        $recepcionistaNuevo->clave = $claveHasheada;
+        $recepcionistaNuevo->nombre = $nombre;
+        $recepcionistaNuevo->apellido = $apellido;
+        $recepcionistaNuevo->email = $email;
+        $recepcionistaNuevo->pais = $pais;
+        $recepcionistaNuevo->ciudad = $ciudad;
+        $recepcionistaNuevo->telefono = $telefono;
 
-        $respuesta = $adminNuevo->crearAdmin();
+        $respuesta = $recepcionistaNuevo->crearRecepcionista();
 
         if (is_numeric($respuesta))
         {
-            $payload = json_encode(array("mensaje" => "Admin creado con exito, ID: " . $respuesta));
+            $payload = json_encode(array("mensaje" => "Recepcionista creado con exito, ID: " . $respuesta));
         } else {
             $payload = json_encode(array("error" => $respuesta));
         }
@@ -46,8 +46,8 @@ class AdminController
 
     public function TraerTodos($request, $response, $args)
     {
-        $lista = Admin::obtenerTodos();
-        $payload = json_encode(array("listaDeAdmins" => $lista));
+        $lista = Recepcionista::obtenerTodos();
+        $payload = json_encode(array("listaDeRecepcionistas" => $lista));
 
         $response->getBody()->write($payload);
         return $response->withHeader('Content-Type', 'application/json');

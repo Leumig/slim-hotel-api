@@ -4,7 +4,7 @@ use Firebase\JWT\JWT;
 
 class AutentificadorJWT
 {
-    private static $claveSecreta = 'S3GuND0P4rCi4L';
+    private static $claveSecreta = '4P1eLH0TeLSl1M';
     private static $tipoEncriptacion = ['HS256'];
 
     public static function CrearToken($datos)
@@ -15,7 +15,7 @@ class AutentificadorJWT
             'exp' => $ahora + (60000),
             'aud' => self::Aud(),
             'data' => $datos,
-            'app' => "Segundo Parcial"
+            'app' => "El Hotel"
         );
         return JWT::encode($payload, self::$claveSecreta);
     }

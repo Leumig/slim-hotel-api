@@ -1,0 +1,1209 @@
+{
+	"info": {
+		"_postman_id": "da89132e-79b3-4f49-9778-4ea102b42931",
+		"name": "El Hotel",
+		"description": "Colección de consultas para la API '**El Hotel**'.\n\n**Repositorio en GitHub:** [<b>El Hotel - API con Slim</b>](https://github.com/Leumig/slim-hotel-api)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29631672"
+	},
+	"item": [
+		{
+			"name": "Autenticacion",
+			"item": [
+				{
+					"name": "Solicitar Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "usuario",
+									"value": "xMigue7",
+									"type": "text"
+								},
+								{
+									"key": "clave",
+									"value": "moonlight999",
+									"type": "text"
+								},
+								{
+									"key": "rol",
+									"value": "Cliente",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:777/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "777",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Clientes",
+			"item": [
+				{
+					"name": "No usados",
+					"item": [
+						{
+							"name": "Traer todos los Clientes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDEyMTE2OTUsImV4cCI6MTcwMTI3MTY5NSwiYXVkIjoiNWE4MTg5NzY0MWUzZGIxNzIzMTAyZDEwMWQ4NTA1MzljYmVkOTBjYSIsImRhdGEiOnsidXN1YXJpbyI6ImxpcHBpMTIzIiwicm9sIjoiR2VyZW50ZSJ9LCJhcHAiOiJTZWd1bmRvIFBhcmNpYWwifQ.OBiIwTGUiT0yOekqhxDnabQfjjNlX4ZXVMRRIBWnank",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:777/usuarios/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "777",
+									"path": [
+										"usuarios",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Traer un Cliente",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExOTM2OTcsImV4cCI6MTcwMTI1MzY5NywiYXVkIjoiNWE4MTg5NzY0MWUzZGIxNzIzMTAyZDEwMWQ4NTA1MzljYmVkOTBjYSIsImRhdGEiOnsidXN1YXJpbyI6InByaW1lckFkbWluIiwicm9sIjoiQWRtaW4ifSwiYXBwIjoiU2VndW5kbyBQYXJjaWFsIn0.TEgfNDHIjpVbryoNelRAu0sHemvsrTf2vFeH__EWWAA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:777/usuarios/100000",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "777",
+									"path": [
+										"usuarios",
+										"100000"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Alta Cliente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDEyMTcyMTIsImV4cCI6MTcwMTI3NzIxMiwiYXVkIjoiNWE4MTg5NzY0MWUzZGIxNzIzMTAyZDEwMWQ4NTA1MzljYmVkOTBjYSIsImRhdGEiOnsidXN1YXJpbyI6InhNaWd1ZTciLCJyb2wiOiJDbGllbnRlIn0sImFwcCI6IlNlZ3VuZG8gUGFyY2lhbCJ9.4_WWMnuV52YFobwioK-zupch79tbZzM6TTwELDovCBg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nombre",
+									"value": "Emmanuel",
+									"type": "text"
+								},
+								{
+									"key": "apellido",
+									"value": "Menchaca",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "Menchuu19@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "tipo_cliente",
+									"value": "INDI-DNI",
+									"type": "text"
+								},
+								{
+									"key": "numero_documento",
+									"value": "39556874",
+									"type": "text"
+								},
+								{
+									"key": "pais",
+									"value": "Argentina",
+									"type": "text"
+								},
+								{
+									"key": "ciudad",
+									"value": "Buenos Aires",
+									"type": "text"
+								},
+								{
+									"key": "telefono",
+									"value": "1123684975",
+									"type": "text"
+								},
+								{
+									"key": "modalidad_pago",
+									"value": "Mercado Pago",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "imagen",
+									"type": "file",
+									"src": "mordo.png"
+								},
+								{
+									"key": "usuario",
+									"value": "Menchuu19a",
+									"type": "text"
+								},
+								{
+									"key": "clave",
+									"value": "bocajuniors",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:777/usuarios/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "777",
+							"path": [
+								"usuarios",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Cliente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDEyMDYzODEsImV4cCI6MTcwMTI2NjM4MSwiYXVkIjoiNWE4MTg5NzY0MWUzZGIxNzIzMTAyZDEwMWQ4NTA1MzljYmVkOTBjYSIsImRhdGEiOnsidXN1YXJpbyI6InhNaWd1ZTciLCJyb2wiOiJDbGllbnRlIn0sImFwcCI6IlNlZ3VuZG8gUGFyY2lhbCJ9.Mi7ro01QgxorQLxNiSiLwl8q3GgWqCK2slOrtLMFpug",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:777/usuarios/ConsultarCliente?numero_cliente=100000&numero_documento=43598785",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "777",
+							"path": [
+								"usuarios",
+								"ConsultarCliente"
+							],
+							"query": [
+								{
+									"key": "numero_cliente",
+									"value": "100000"
+								},
+								{
+									"key": "numero_documento",
+									"value": "43598785"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar Cliente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExOTUxODAsImV4cCI6MTcwMTI1NTE4MCwiYXVkIjoiNWE4MTg5NzY0MWUzZGIxNzIzMTAyZDEwMWQ4NTA1MzljYmVkOTBjYSIsImRhdGEiOnsidXN1YXJpbyI6ImNoYXJseXBlcG8iLCJyb2wiOiJDbGllbnRlIn0sImFwcCI6IlNlZ3VuZG8gUGFyY2lhbCJ9.i-y1RCVH72lvSE3urf4-9xqmBqyFmL-fOifHIa3zl48",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "Miguel"
+								},
+								{
+									"key": "apellido",
+									"value": "Gilo"
+								},
+								{
+									"key": "email",
+									"value": "junmigue7@gmail.com"
+								},
+								{
+									"key": "tipo_cliente",
+									"value": "INDI-DNI"
+								},
+								{
+									"key": "numero_documento",
+									"value": "43598785"
+								},
+								{
+									"key": "pais",
+									"value": "Argentina"
+								},
+								{
+									"key": "ciudad",
+									"value": "La Plata"
+								},
+								{
+									"key": "telefono",
+									"value": "11435867410"
+								},
+								{
+									"key": "modalidad_pago",
+									"value": "Mercado Pago"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:777/usuarios/100000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "777",
+							"path": [
+								"usuarios",
+								"100000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Cliente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExOTM2OTcsImV4cCI6MTcwMTI1MzY5NywiYXVkIjoiNWE4MTg5NzY0MWUzZGIxNzIzMTAyZDEwMWQ4NTA1MzljYmVkOTBjYSIsImRhdGEiOnsidXN1YXJpbyI6InByaW1lckFkbWluIiwicm9sIjoiQWRtaW4ifSwiYXBwIjoiU2VndW5kbyBQYXJjaWFsIn0.TEgfNDHIjpVbryoNelRAu0sHemvsrTf2vFeH__EWWAA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:777/usuarios/BorrarCliente?numero_cliente=100001&numero_documento=42689035&tipo_cliente=Corporativo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "777",
+							"path": [
+								"usuarios",
+								"BorrarCliente"
+							],
+							"query": [
+								{
+									"key": "numero_cliente",
+									"value": "100001"
+								},
+								{
+									"key": "numero_documento",
+									"value": "42689035"
+								},
+								{
+									"key": "tipo_cliente",
+									"value": "Corporativo"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reservas",
+			"item": [
+				{
+					"name": "No usados",
+					"item": [
+						{
+							"name": "Traer todas las Reservas",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:777/reservas/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "777",
+									"path": [
+										"reservas",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Traer una Reserva",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:777/reservas/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "777",
+									"path": [
+										"reservas",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Consultas",
+					"item": [
+						{
+							"name": "Consulta A",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExOTM2OTcsImV4cCI6MTcwMTI1MzY5NywiYXVkIjoiNWE4MTg5NzY0MWUzZGIxNzIzMTAyZDEwMWQ4NTA1MzljYmVkOTBjYSIsImRhdGEiOnsidXN1YXJpbyI6InByaW1lckFkbWluIiwicm9sIjoiQWRtaW4ifSwiYXBwIjoiU2VndW5kbyBQYXJjaWFsIn0.TEgfNDHIjpVbryoNelRAu0sHemvsrTf2vFeH__EWWAA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:777/reservas/ConsultarReserva?consulta=A&tipo_habitacion=Simple&fecha=2023-11-27",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "777",
+									"path": [
+										"reservas",
+										"ConsultarReserva"
+									],
+									"query": [
+										{
+											"key": "consulta",
+											"value": "A"
+										},
+										{
+											"key": "tipo_habitacion",
+											"value": "Simple"
+										},
+										{
+											"key": "fecha",
+											"value": "2023-11-27"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Consulta B",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:777/reservas/ConsultarReserva?consulta=B&numero_cliente=100000",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "777",
+									"path": [
+										"reservas",
+										"ConsultarReserva"
+									],
+									"query": [
+										{
+											"key": "consulta",
+											"value": "B"
+										},
+										{
+											"key": "numero_cliente",
+											"value": "100000"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Consulta C",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:777/reservas/ConsultarReserva?consulta=C&fechaMin=2023-01-01&fechaMax=2025-01-01",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "777",
+									"path": [
+										"reservas",
+										"ConsultarReserva"
+									],
+									"query": [
+										{
+											"key": "consulta",
+											"value": "C"
+										},
+										{
+											"key": "fechaMin",
+											"value": "2023-01-01"
+										},
+										{
+											"key": "fechaMax",
+											"value": "2025-01-01"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Consulta D",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:777/reservas/ConsultarReserva?consulta=D&tipo_habitacion=Suite",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "777",
+									"path": [
+										"reservas",
+										"ConsultarReserva"
+									],
+									"query": [
+										{
+											"key": "consulta",
+											"value": "D"
+										},
+										{
+											"key": "tipo_habitacion",
+											"value": "Suite"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Consulta E",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:777/reservas/ConsultarReserva?consulta=E&tipo_cliente=Individual",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "777",
+									"path": [
+										"reservas",
+										"ConsultarReserva"
+									],
+									"query": [
+										{
+											"key": "consulta",
+											"value": "E"
+										},
+										{
+											"key": "tipo_cliente",
+											"value": "Individual"
+										},
+										{
+											"key": "fecha",
+											"value": "2023-11-19",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Consulta F",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:777/reservas/ConsultarReserva?consulta=F&numero_cliente=100000",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "777",
+									"path": [
+										"reservas",
+										"ConsultarReserva"
+									],
+									"query": [
+										{
+											"key": "consulta",
+											"value": "F"
+										},
+										{
+											"key": "numero_cliente",
+											"value": "100000"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Consulta G",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:777/reservas/ConsultarReserva?consulta=G&fechaMin=2023-01-01&fechaMax=2025-01-01",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "777",
+									"path": [
+										"reservas",
+										"ConsultarReserva"
+									],
+									"query": [
+										{
+											"key": "consulta",
+											"value": "G"
+										},
+										{
+											"key": "fechaMin",
+											"value": "2023-01-01"
+										},
+										{
+											"key": "fechaMax",
+											"value": "2025-01-01"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Consulta H",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:777/reservas/ConsultarReserva?consulta=H&tipo_cliente=Individual",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "777",
+									"path": [
+										"reservas",
+										"ConsultarReserva"
+									],
+									"query": [
+										{
+											"key": "consulta",
+											"value": "H"
+										},
+										{
+											"key": "tipo_cliente",
+											"value": "Individual"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Consulta I",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:777/reservas/ConsultarReserva?consulta=I&numero_cliente=100000",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "777",
+									"path": [
+										"reservas",
+										"ConsultarReserva"
+									],
+									"query": [
+										{
+											"key": "consulta",
+											"value": "I"
+										},
+										{
+											"key": "numero_cliente",
+											"value": "100000"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Consulta J",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:777/reservas/ConsultarReserva?consulta=J&modalidad_pago=Efectivo",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "777",
+									"path": [
+										"reservas",
+										"ConsultarReserva"
+									],
+									"query": [
+										{
+											"key": "consulta",
+											"value": "J"
+										},
+										{
+											"key": "modalidad_pago",
+											"value": "Efectivo"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Alta Reserva",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDEyMDYzODEsImV4cCI6MTcwMTI2NjM4MSwiYXVkIjoiNWE4MTg5NzY0MWUzZGIxNzIzMTAyZDEwMWQ4NTA1MzljYmVkOTBjYSIsImRhdGEiOnsidXN1YXJpbyI6InhNaWd1ZTciLCJyb2wiOiJDbGllbnRlIn0sImFwcCI6IlNlZ3VuZG8gUGFyY2lhbCJ9.Mi7ro01QgxorQLxNiSiLwl8q3GgWqCK2slOrtLMFpug",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "tipo_cliente",
+									"value": "Corporativo",
+									"type": "text"
+								},
+								{
+									"key": "numero_cliente",
+									"value": "100005",
+									"type": "text"
+								},
+								{
+									"key": "tipo_habitacion",
+									"value": "Simple",
+									"type": "text"
+								},
+								{
+									"key": "importe",
+									"value": "120000",
+									"type": "text"
+								},
+								{
+									"key": "fecha_entrada",
+									"value": "2024-02-20",
+									"type": "text"
+								},
+								{
+									"key": "fecha_salida",
+									"value": "2024-02-25",
+									"type": "text"
+								},
+								{
+									"key": "imagen",
+									"type": "file",
+									"src": "rigby.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:777/reservas/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "777",
+							"path": [
+								"reservas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar Reserva",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "tipo_cliente",
+									"value": "Corporativo",
+									"type": "text"
+								},
+								{
+									"key": "numero_cliente",
+									"value": "100000",
+									"type": "text"
+								},
+								{
+									"key": "tipo_habitacion",
+									"value": "Suite",
+									"type": "text"
+								},
+								{
+									"key": "importe",
+									"value": "300000",
+									"type": "text"
+								},
+								{
+									"key": "fecha_entrada",
+									"value": "2023-11-28",
+									"type": "text"
+								},
+								{
+									"key": "fecha_salida",
+									"value": "2023-11-30",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:777/reservas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "777",
+							"path": [
+								"reservas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancelar Reserva",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:777/reservas/1?numero_cliente=100000&numero_documento=44578006",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "777",
+							"path": [
+								"reservas",
+								"1"
+							],
+							"query": [
+								{
+									"key": "numero_cliente",
+									"value": "100000"
+								},
+								{
+									"key": "numero_documento",
+									"value": "44578006"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ajustes",
+			"item": [
+				{
+					"name": "Alta Ajuste",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDEyMTIwOTIsImV4cCI6MTcwMTI3MjA5MiwiYXVkIjoiNWE4MTg5NzY0MWUzZGIxNzIzMTAyZDEwMWQ4NTA1MzljYmVkOTBjYSIsImRhdGEiOnsidXN1YXJpbyI6InBvbGxvNDQ0Iiwicm9sIjoiUmVjZXBjaW9uaXN0YSJ9LCJhcHAiOiJTZWd1bmRvIFBhcmNpYWwifQ.hHMC5aIb3960J4ux203t5PeR93bTtC3HWfWIeRw3z9Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id_reserva",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "motivo",
+									"value": "Falta de pago",
+									"type": "text"
+								},
+								{
+									"key": "monto",
+									"value": "100",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:777/ajustes/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "777",
+							"path": [
+								"ajustes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Traer todos los Ajustes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExOTM2OTcsImV4cCI6MTcwMTI1MzY5NywiYXVkIjoiNWE4MTg5NzY0MWUzZGIxNzIzMTAyZDEwMWQ4NTA1MzljYmVkOTBjYSIsImRhdGEiOnsidXN1YXJpbyI6InByaW1lckFkbWluIiwicm9sIjoiQWRtaW4ifSwiYXBwIjoiU2VndW5kbyBQYXJjaWFsIn0.TEgfNDHIjpVbryoNelRAu0sHemvsrTf2vFeH__EWWAA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:777/ajustes/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "777",
+							"path": [
+								"ajustes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Traer un Ajuste",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:777/ajustes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "777",
+							"path": [
+								"ajustes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Gerentes",
+			"item": [
+				{
+					"name": "Alta Gerente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "usuario",
+									"value": "lippi123",
+									"type": "text"
+								},
+								{
+									"key": "clave",
+									"value": "probandooo",
+									"type": "text"
+								},
+								{
+									"key": "nombre",
+									"value": "Franco",
+									"type": "text"
+								},
+								{
+									"key": "apellido",
+									"value": "Lippi",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "lippi222@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "pais",
+									"value": "Argentina",
+									"type": "text"
+								},
+								{
+									"key": "ciudad",
+									"value": "Buenos Aires",
+									"type": "text"
+								},
+								{
+									"key": "telefono",
+									"value": "4336685800",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:777/gerentes/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "777",
+							"path": [
+								"gerentes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Traer todos los Gerentes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:777/gerentes/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "777",
+							"path": [
+								"gerentes",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Recepcionistas",
+			"item": [
+				{
+					"name": "Alta Recepcionista",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "usuario",
+									"value": "pollo444",
+									"type": "text"
+								},
+								{
+									"key": "clave",
+									"value": "5555555",
+									"type": "text"
+								},
+								{
+									"key": "nombre",
+									"value": "Sebastian",
+									"type": "text"
+								},
+								{
+									"key": "apellido",
+									"value": "Gomez",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "sebagomez@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "pais",
+									"value": "Argentina",
+									"type": "text"
+								},
+								{
+									"key": "ciudad",
+									"value": "Buenos Aires",
+									"type": "text"
+								},
+								{
+									"key": "telefono",
+									"value": "1100174695",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:777/recepcionistas/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "777",
+							"path": [
+								"recepcionistas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Traer todos los Recepcionistas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:777/recepcionistas/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "777",
+							"path": [
+								"recepcionistas",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

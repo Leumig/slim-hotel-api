@@ -1,6 +1,6 @@
 <?php
 
-class Admin
+class Recepcionista
 {
     public $usuario;
     public $clave;
@@ -19,7 +19,7 @@ class Admin
     public $fecha_baja;
     public $rol;
 
-    public function crearAdmin()
+    public function crearRecepcionista()
     {
         $retorno = 'Error al obtener el ultimo ID insertado';
 
@@ -28,7 +28,7 @@ class Admin
 
             $consulta = $objAccesoDatos->prepararConsulta("INSERT INTO usuarios (usuario, clave, rol, nombre, apellido, tipo_documento, numero_documento, email, tipo_cliente, pais, ciudad, telefono, modalidad_pago, estado, fecha_alta) VALUES (:usuario, :clave, :rol, :nombre, :apellido, :tipo_documento, :numero_documento, :email, :tipo_cliente, :pais, :ciudad, :telefono, :modalidad_pago, :estado, NOW())");
             
-            $rol = 'Admin';
+            $rol = 'Recepcionista';
             $tipo_documento = 'N/A';
             $numero_documento = '0000000';
             $tipo_cliente = 'Ninguno';
@@ -63,9 +63,9 @@ class Admin
     public static function obtenerTodos()
     {
         $objAccesoDatos = AccesoDatos::obtenerInstancia();
-        $consulta = $objAccesoDatos->prepararConsulta("SELECT usuario, clave, rol, nombre, apellido, email, pais, ciudad, telefono, tipo_documento, numero_documento, tipo_cliente, modalidad_pago, estado, fecha_alta FROM usuarios WHERE rol = 'Admin'");
+        $consulta = $objAccesoDatos->prepararConsulta("SELECT usuario, clave, rol, nombre, apellido, email, pais, ciudad, telefono, tipo_documento, numero_documento, tipo_cliente, modalidad_pago, estado, fecha_alta FROM usuarios WHERE rol = 'Recepcionista'");
 
         $consulta->execute();
-        return $consulta->fetchAll(PDO::FETCH_CLASS, 'Admin');
+        return $consulta->fetchAll(PDO::FETCH_CLASS, 'Recepcionista');
     }
 }
