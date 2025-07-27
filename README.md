@@ -1,4 +1,4 @@
-# 🏨 El Hotel - API con Sli
+# 🏨 El Hotel - API con Slim
 
 Este proyecto es una API desarrollada con Slim, que es un micro-framework de PHP. Trabaja desde el lado del servidor comunicándose con una base de datos SQL.
 
